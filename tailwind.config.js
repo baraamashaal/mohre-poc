@@ -4,8 +4,15 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    future: {
+        hoverOnlyWhenSupported: false,
+    },
     theme: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        require('@aegov/design-system'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/forms')
+    ],
 }
