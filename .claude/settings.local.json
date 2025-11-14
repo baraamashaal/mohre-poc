@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:designsystem.gov.ae)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
