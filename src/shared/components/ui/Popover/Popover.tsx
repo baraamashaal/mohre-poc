@@ -63,7 +63,7 @@ export interface PopoverTriggerProps extends ComponentPropsWithoutRef<typeof Tri
 // PopoverRoot Component
 // ============================================================================
 
-export const PopoverRoot = forwardRef<HTMLDivElement, PopoverRootProps>((props) => {
+export function PopoverRoot(props: PopoverRootProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   try {
@@ -90,9 +90,7 @@ export const PopoverRoot = forwardRef<HTMLDivElement, PopoverRootProps>((props) 
       {children}
     </Root>
   )
-})
-
-PopoverRoot.displayName = 'PopoverRoot'
+}
 
 // ============================================================================
 // PopoverTrigger Component

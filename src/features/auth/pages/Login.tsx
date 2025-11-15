@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { ROUTES } from '../../../shared/constants'
 import { UAEPassLogin } from '../components/UAEPassLogin'
 import { LegacyLogin } from '../components/LegacyLogin'
-import { User } from '../types/auth.types'
+import type {User} from '../types/auth.types';
 
 export function Login() {
   const navigate = useNavigate()
   const { login } = useAuth()
-  const [showLegacyLogin, setShowLegacyLogin] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
 
+  // Derive state directly from URL parameter (single source of truth)
+  const showLegacyLogin = searchParams.get('isLegacy') === 'true'
+  const showUaePassLogin = !showLegacyLogin
   const handleLoginSuccess = (user: User) => {
     login(user)
     void navigate(ROUTES.DASHBOARD)
@@ -27,36 +29,42 @@ export function Login() {
         </div>
 
         {/* UAE Pass Login Section */}
-        <UAEPassLogin
-          onLoginSuccess={handleLoginSuccess}
-          className={showLegacyLogin ? 'hidden' : ''}
-        />
+        {
+          showUaePassLogin && 
+          <>
+              <UAEPassLogin onLoginSuccess={handleLoginSuccess} />
+              <div>
+                  <p className="text-aeblack-800 mb-4">Need a UAE PASS account? <a href="https://uaepass.ae/signup" target="_blank" rel="noopener noreferrer" className="pointer-events-auto">Create an account</a></p>
+                  <p className="text-aeblack-800">
+                      <a href="#" className="pointer-events-auto" onClick={(e) => {
+                        e.preventDefault()
+                        setSearchParams({ isLegacy: 'true' })
+                      }}>Use other login option</a>
+                  </p>
+              </div>
+          </>
+        }
+        
 
         {/* Legacy Login Section */}
-        <LegacyLogin
-          onLoginSuccess={handleLoginSuccess}
-          className={!showLegacyLogin ? 'hidden' : ''}
-        />
+        {
+          showLegacyLogin &&
+          <>
+              <LegacyLogin onLoginSuccess={handleLoginSuccess} />
+              <div>
+                  Switch to <a href="#" onClick={(e) => {
+                e.preventDefault()
+                setSearchParams({})
+              }}>login with UAE pass</a>
+              </div>
+          </>
+        }
+        
 
         {/* Footer Links */}
-        <div>
-          <div className={`aria-expanded:hidden pointer-events-none ${showLegacyLogin ? 'hidden' : ''}`} data-accordion-target="#aegov-accordion-body-2" aria-expanded="false" aria-controls="aegov-accordion-body-2">
-            <p className="text-aeblack-800 mb-4">Need a UAE PASS account? <a href="https://uaepass.ae/signup" target="_blank" rel="noopener noreferrer" className="pointer-events-auto">Create an account</a></p>
-            <p className="text-aeblack-800">
-              <a href="#" className="pointer-events-auto" onClick={(e) => {
-                e.preventDefault()
-                setShowLegacyLogin(true)
-              }}>Use other login option</a>
-            </p>
-          </div>
-        </div>
+          
 
-        <div className={`aria-expanded:hidden ${showLegacyLogin ? '' : 'hidden'}`} data-accordion-target="#aegov-accordion-body-1" aria-expanded="true" aria-controls="aegov-accordion-body-1">
-          Switch to <a href="#" onClick={(e) => {
-            e.preventDefault()
-            setShowLegacyLogin(false)
-          }}>login with UAE pass</a>
-        </div>
+        
       </div>
     </div>
   )

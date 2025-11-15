@@ -15,9 +15,12 @@ export interface RangeSliderProps {
   className?: string
 }
 
-export const RangeSlider = (
-    { ref, label, min = 0, max = 100, step = 1, value, defaultValue = [min], onValueChange, showValue = true, disabled, className }: RangeSliderProps & { ref?: React.RefObject<React.ComponentRef<typeof SliderPrimitive.Root> | null> }
-  ) => {
+export const RangeSlider = React.forwardRef<
+  React.ComponentRef<typeof SliderPrimitive.Root>,
+  RangeSliderProps
+>((props, ref) => {
+  const { label, min = 0, max = 100, step = 1, value, defaultValue = [min], onValueChange, showValue = true, disabled, className } = props
+
     const sliderId = React.useId()
     const [internalValue, setInternalValue] = React.useState(defaultValue)
 
@@ -77,6 +80,6 @@ export const RangeSlider = (
         </div>
       </div>
     )
-  }
+  })
 
 RangeSlider.displayName = 'RangeSlider'

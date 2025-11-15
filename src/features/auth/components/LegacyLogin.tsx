@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { User } from '../types/auth.types'
+import type {User} from '../types/auth.types';
 
 interface LegacyLoginForm {
   username: string

@@ -1,4 +1,4 @@
-import { User } from '../types/auth.types'
+import type {User} from '../types/auth.types';
 import { UAEPassButton } from './UAEPassButton'
 
 interface UAEPassLoginProps {
@@ -17,7 +17,6 @@ export function UAEPassLogin({ onLoginSuccess, className = '' }: UAEPassLoginPro
       emiratesId: '784-1990-1234567-1',
       roles: ['COMPANY_OWNER', 'SPONSOR'],
     }
-
     onLoginSuccess(mockUser)
   }
 

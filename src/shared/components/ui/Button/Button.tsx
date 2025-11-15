@@ -22,7 +22,7 @@ const ButtonSchema = z.object({
   isIcon: z.boolean().optional(),
   asChild: z.boolean().optional(),
   disabled: z.boolean().optional(),
-})
+}).loose()
 
 // ============================================================================
 // Variant Styles
