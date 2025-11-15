@@ -1,0 +1,35 @@
+{
+  "app": {
+    "title": "Ministry of Human Resources and Emiratisation",
+    "subtitle": "Government Services Portal"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "employees": "Employees",
+    "sponsors": "Sponsors",
+    "logout": "Logout"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "actions": "Actions",
+    "enquiries": "Enquiries",
+    "viewDetails": "View Details",
+    "backToDashboard": "Back to Dashboard"
+  },
+  "auth": {
+    "login": "Login with UAE Pass",
+    "logout": "Logout",
+    "welcomeBack": "Welcome Back",
+    "unauthorized": "You are not authorized to access this page"
+  }
+}

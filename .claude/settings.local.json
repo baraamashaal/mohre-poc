@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:designsystem.gov.ae)"
+      "WebFetch(domain:designsystem.gov.ae)",
+      "Bash(find:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm run lint:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build)",
+      "Bash(wc:*)",
+      "Bash(dir \"C:\\code\\mohre-poc\\src\\shared\\components\\ui\\Pagination\")",
+      "Bash(npm install:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

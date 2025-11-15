@@ -1,0 +1,35 @@
+{
+  "app": {
+    "title": "وزارة الموارد البشرية والتوطين",
+    "subtitle": "بوابة الخدمات الحكومية"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "companies": "الشركات",
+    "employees": "الموظفين",
+    "sponsors": "الكفلاء",
+    "logout": "تسجيل الخروج"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجح",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "submit": "إرسال",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "search": "بحث",
+    "filter": "تصفية",
+    "actions": "الإجراءات",
+    "enquiries": "الاستفسارات",
+    "viewDetails": "عرض التفاصيل",
+    "backToDashboard": "العودة إلى لوحة التحكم"
+  },
+  "auth": {
+    "login": "تسجيل الدخول باستخدام UAE Pass",
+    "logout": "تسجيل الخروج",
+    "welcomeBack": "مرحباً بعودتك",
+    "unauthorized": "ليس لديك صلاحية للوصول إلى هذه الصفحة"
+  }
+}

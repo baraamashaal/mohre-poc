@@ -1,0 +1,15 @@
+{
+  "company": {
+    "title": "Companies",
+    "list": "Company List",
+    "details": "Company Details",
+    "addNew": "Add Company",
+    "name": "Company Name",
+    "tradeNumber": "Trade License Number",
+    "employees": "Employees",
+    "actions": {
+      "title": "Company Actions",
+      "addWorkPermit": "Add New Work Permit"
+    }
+  }
+}

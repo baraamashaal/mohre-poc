@@ -1,0 +1,27 @@
+{
+  "employee": {
+    "title": "الموظفين",
+    "list": "قائمة الموظفين",
+    "details": "تفاصيل الموظف",
+    "name": "اسم الموظف",
+    "position": "المنصب",
+    "nationality": "الجنسية",
+    "salary": "الراتب",
+    "actions": {
+      "title": "إجراءات الموظف",
+      "modifyWorkPermit": "تعديل تصريح العمل",
+      "cancelWorkPermit": "إلغاء تصريح العمل",
+      "renewWorkPermit": "تجديد تصريح العمل",
+      "submitComplaint": "تقديم شكوى",
+      "submitCancelComplaint": "تقديم شكوى إلغاء تصريح العمل",
+      "payFine": "دفع الغرامة"
+    },
+    "enquiries": {
+      "title": "استفسارات الموظف",
+      "workPermitContract": "عقد تصريح العمل",
+      "wpp": "بوليصة حماية العامل (WPP)",
+      "iloe": "بوليصة التأمين ضد التعطل (ILOE)",
+      "whi": "بوليصة التأمين الصحي (WHI)"
+    }
+  }
+}

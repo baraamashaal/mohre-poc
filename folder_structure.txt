@@ -1,0 +1,65 @@
+src/
+├── features/
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── index.ts
+│   ├── company/
+│   │   ├── actions/
+│   │   │   └── work-permit/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── index.ts
+│   ├── employee/
+│   │   ├── actions/
+│   │   │   ├── complaint/
+│   │   │   ├── payment/
+│   │   │   └── work-permit/
+│   │   ├── components/
+│   │   ├── enquiries/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── index.ts
+│   ├── sponsor/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── index.ts
+│   └── dashboard/
+│       ├── components/
+│       ├── hooks/
+│       ├── pages/
+│       └── index.ts
+├── shared/
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── Button/
+│   │   │   ├── Card/
+│   │   │   ├── Alert/
+│   │   │   └── Badge/
+│   │   ├── forms/
+│   │   │   └── Input/
+│   │   └── layouts/
+│   │       └── Header/
+│   ├── constants/
+│   ├── hooks/
+│   ├── services/
+│   ├── types/
+│   └── utils/
+├── layouts/
+├── routes/
+├── locales/
+│   ├── en/
+│   └── ar/
+├── store/
+│   └── slices/
+├── styles/
+└── lib/

@@ -1,0 +1,27 @@
+{
+  "employee": {
+    "title": "Employees",
+    "list": "Employee List",
+    "details": "Employee Details",
+    "name": "Employee Name",
+    "position": "Position",
+    "nationality": "Nationality",
+    "salary": "Salary",
+    "actions": {
+      "title": "Employee Actions",
+      "modifyWorkPermit": "Modify Work Permit",
+      "cancelWorkPermit": "Cancel Work Permit",
+      "renewWorkPermit": "Renew Work Permit",
+      "submitComplaint": "Submit Complaint",
+      "submitCancelComplaint": "Submit Cancel Work Permit Complaint",
+      "payFine": "Pay Fine"
+    },
+    "enquiries": {
+      "title": "Employee Enquiries",
+      "workPermitContract": "Work Permit Contract",
+      "wpp": "Worker Protection Program (WPP)",
+      "iloe": "Unemployment Insurance (ILOE)",
+      "whi": "Health Insurance (WHI)"
+    }
+  }
+}
