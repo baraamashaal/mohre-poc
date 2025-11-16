@@ -1,5 +1,6 @@
 import { LogoSection } from './LogoSection'
 import { MobileMenuModal } from './MobileMenuModal'
+import { Button } from '../../ui'
 
 /**
  * HeaderMobile Component
@@ -17,7 +18,7 @@ export function HeaderMobile() {
             <div className="header-top-right">
               <div>
                 <div className="flex items-center gap-3">
-                  <button data-modal-target="openMenu" data-modal-toggle="openMenu" className="hamburger-icon text-aeblack-700">
+                  <Button data-modal-target="openMenu" data-modal-toggle="openMenu" variant="link" className="hamburger-icon text-aeblack-700 !p-0 !bg-transparent !border-0 hover:!bg-transparent">
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                       <rect width="256" height="256" fill="none"></rect>
                       <line x1="40" y1="128" x2="216" y2="128" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line>
@@ -25,7 +26,7 @@ export function HeaderMobile() {
                       <line x1="40" y1="192" x2="216" y2="192" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line>
                     </svg>
                     <span className="sr-only">Toggle main menu</span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

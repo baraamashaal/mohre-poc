@@ -1,25 +1,24 @@
+import { Input } from '../../forms'
+import { MagnifyingGlassIcon } from '@phosphor-icons/react'
+
 /**
  * SearchForm Component
  *
- * Desktop search form with input and submit button.
+ * Desktop search form with search input.
  * Positioned in header-top section.
+ * Uses Input component with custom search icon at the end (suffix).
  */
 export function SearchForm() {
   return (
-    <form action="#" method="post">
-      <div className="aegov-form-control w-64 xl:w-80 ">
-        <div className="form-control-input">
-          <input type="search" aria-label="search in site" name="searchelem" id="searchelem" placeholder="search for something" />
-          <button type="submit" className="control-suffix">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none"></rect>
-              <circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></circle>
-              <line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16"></line>
-            </svg>
-            <span className="sr-only">Search</span>
-          </button>
-        </div>
-      </div>
+    <form action="#" method="post" className="w-64 xl:w-80">
+      <Input
+        type="text"
+        id="searchelem"
+        name="searchelem"
+        placeholder="search for something"
+        aria-label="search in site"
+        suffix={<MagnifyingGlassIcon className="h-6 w-6" />}
+      />
     </form>
   )
 }

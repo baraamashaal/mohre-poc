@@ -46,24 +46,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 // Input Component
 // ============================================================================
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      type = 'text',
-      label,
-      error,
-      helperText,
-      prefix,
-      suffix,
-      className,
-      size = 'base',
-      variant = 'primary',
-      disabled,
-      required,
-      id,
-      ...props
-    },
-    ref
+export const Input = (
+    { ref, type = 'text', label, error, helperText, prefix, suffix, className, size = 'base', variant = 'primary', disabled, required, id, ...props }: InputProps & { ref?: React.RefObject<HTMLInputElement | null> }
   ) => {
     // Validate props with Zod
     try {
@@ -186,6 +170,5 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       </div>
     )
   }
-)
 
 Input.displayName = 'Input'
