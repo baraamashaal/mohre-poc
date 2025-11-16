@@ -1,22 +1,24 @@
-import type { ReactNode } from 'react'
-import { Header } from '../shared/components/layouts/Header'
+import { Outlet } from 'react-router-dom'
+import { Header, Footer } from '../shared/components/layouts'
 
-interface MainLayoutProps {
-  children: ReactNode
-}
-
-export function MainLayout({ children }: MainLayoutProps) {
+/**
+ * Main Layout Component
+ *
+ * Provides consistent layout across all authenticated pages:
+ * - Header (navigation, user menu, language switcher)
+ * - Content area (renders child routes via Outlet)
+ * - Footer (copyright, links)
+ */
+export function MainLayout() {
   return (
-    <div className="min-h-screen bg-aegov-bg">
+    <div className="min-h-screen bg-aegov-bg flex flex-col">
       <Header />
-      <main className="container mx-auto max-w-7xl px-4 py-8">{children}</main>
-      <footer className="bg-aegov-black text-white py-8 mt-16">
-        <div className="container mx-auto max-w-7xl px-4 text-center">
-          <p className="text-sm text-gray-400">
-            © 2025 Ministry of Human Resources and Emiratisation. All rights reserved.
-          </p>
-        </div>
-      </footer>
+
+      <main className="flex-1 container mx-auto max-w-7xl px-4 py-8">
+        <Outlet />
+      </main>
+
+      <Footer />
     </div>
   )
 }

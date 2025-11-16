@@ -13,39 +13,32 @@ export function AppRoutes() {
         {/* Public Routes */}
         <Route path={ROUTES.LOGIN} element={<Login />} />
 
-        {/* Protected Routes */}
+        {/* Protected Routes with MainLayout */}
         <Route
-          path={ROUTES.DASHBOARD}
           element={
             <ProtectedRoute>
-              <MainLayout>
-                <Dashboard />
-              </MainLayout>
+              <MainLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          {/* All nested routes automatically get Header + Footer */}
+          <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
 
-        <Route
-          path={ROUTES.COMPANIES}
-          element={
-            <ProtectedRoute
-              requiredRoles={[UserRole.COMPANY_OWNER, UserRole.COMPANY_AUTHORIZER]}
-            >
-              <MainLayout>
+          <Route
+            path={ROUTES.COMPANIES}
+            element={
+              <ProtectedRoute
+                requiredRoles={[UserRole.COMPANY_OWNER, UserRole.COMPANY_AUTHORIZER]}
+              >
                 <CompanyList />
-              </MainLayout>
-            </ProtectedRoute>
-          }
-        />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Redirect root to dashboard */}
-        <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
-
-        {/* 404 */}
-        <Route
-          path="*"
-          element={
-            <MainLayout>
+          {/* 404 Page */}
+          <Route
+            path="*"
+            element={
               <div className="text-center py-16">
                 <h1 className="text-4xl font-bold text-aegov-black mb-4">
                   404 - Page Not Found
@@ -57,9 +50,12 @@ export function AppRoutes() {
                   Go to Dashboard
                 </a>
               </div>
-            </MainLayout>
-          }
-        />
+            }
+          />
+        </Route>
+
+        {/* Redirect root to dashboard */}
+        <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
       </Routes>
     </BrowserRouter>
   )
