@@ -34,7 +34,7 @@ const AccordionItemSchema = z.object({
   value: z.string(),
   title: z.string(),
   children: z.custom<React.ReactNode>(),
-  icon: z.custom<React.ComponentType<{ weight?: string; className?: string; style?: React.CSSProperties }>>().optional(),
+  icon: z.custom<React.ComponentType<any>>().optional(),
   iconRotateDeg: z.number().optional().default(180),
 })
 
@@ -55,7 +55,7 @@ export interface AccordionItemConfig {
   value: string
   title: string
   children: React.ReactNode
-  icon?: React.ComponentType<{ weight?: string; className?: string; style?: React.CSSProperties }>
+  icon?: React.ComponentType<any>
   iconRotateDeg?: number
 }
 

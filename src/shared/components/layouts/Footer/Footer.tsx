@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { PlusIcon } from '@phosphor-icons/react'
-import {Accordion, Hyperlink} from '../ui';
+import { Hyperlink } from '../../ui'
+import { FooterAccordion } from './FooterAccordion'
 
 /**
  * Footer Component
@@ -15,98 +15,69 @@ export function Footer() {
   const { t } = useTranslation('common')
   const currentYear = new Date().getFullYear()
 
-  const navigationSections = [
+  const navigationItems = [
     {
-      value: 'ministry',
+      id: 'ministry',
       title: 'The Ministry',
-      links: [
-        { label: 'About the ministry', href: '#' },
-        { label: 'About the minister', href: '#' },
-        { label: 'The UAE charter for Future Services', href: '#' },
-        { label: 'Customer happiness charter', href: '#' },
-        { label: 'Awards', href: '#' },
-        { label: 'Careers', href: '#' },
-        { label: 'Procurement', href: '#' },
-      ],
+      defaultOpen: true,
+      children: (
+        <ul className="accordion-content-body">
+          <li><a href="">About the ministry</a></li>
+          <li><a href="">About the minister</a></li>
+          <li><a href="">The UAE charter for Future Services</a></li>
+          <li><a href="">Customer happiness charter</a></li>
+          <li><a href="">Awards</a></li>
+          <li><a href="">Careers</a></li>
+          <li><a href="">Procurement</a></li>
+        </ul>
+      ),
     },
     {
-      value: 'website',
+      id: 'website',
       title: 'Using the website',
-      links: [
-        { label: 'Sitemap', href: '#' },
-        { label: 'Disclaimer', href: '#' },
-        { label: 'Privacy policy', href: '#' },
-        { label: 'Terms and conditions', href: '#' },
-        { label: 'Accessibility', href: '#' },
-        { label: 'Digital participation policy', href: '#' },
-      ],
+      children: (
+        <ul className="accordion-content-body">
+          <li><a href="">Sitemap</a></li>
+          <li><a href="">Disclaimer</a></li>
+          <li><a href="">Privacy policy</a></li>
+          <li><a href="">Terms and conditions</a></li>
+          <li><a href="">Accessibility</a></li>
+          <li><a href="">Digital participation policy</a></li>
+        </ul>
+      ),
     },
     {
-      value: 'support',
+      id: 'support',
       title: 'Information and support',
-      links: [
-        { label: 'Services catalogue', href: '#' },
-        { label: 'Media centre', href: '#' },
-        { label: 'Contact us', href: '#' },
-        { label: "FAQ's", href: '#' },
-        { label: 'Feedback and complaints', href: '#' },
-      ],
+      children: (
+        <ul className="accordion-content-body">
+          <li><a href="">Services catalogue</a></li>
+          <li><a href="">Media centre</a></li>
+          <li><a href="">Contact us</a></li>
+          <li><a href="">FAQ's</a></li>
+          <li><a href="">Feedback and complaints</a></li>
+        </ul>
+      ),
     },
     {
-      value: 'references',
+      id: 'references',
       title: 'References',
-      links: [
-        { label: 'Regulations', href: '#' },
-        { label: 'Media kit', href: '#' },
-        { label: 'Abbreviations and glossary', href: '#' },
-      ],
+      children: (
+        <ul className="accordion-content-body">
+          <li><a href="">Regulations</a></li>
+          <li><a href="">Media kit</a></li>
+          <li><a href="">Abbreviations and glossary</a></li>
+        </ul>
+      ),
     },
   ]
-
-  const accordionItems = navigationSections.map((section) => ({
-    value: section.value,
-    title: section.title,
-    icon: PlusIcon,
-    iconRotateDeg: 45,
-    children: (
-      <ul className="space-y-2">
-        {section.links.map((link) => (
-          <li key={link.label}>
-            <Hyperlink href={link.href} variant="secondary">
-              {link.label}
-            </Hyperlink>
-          </li>
-        ))}
-      </ul>
-    ),
-  }))
 
   return (
     <footer className="aegov-footer">
       <div className="footer-top sm:py-6 md:py-12">
         <div className="container">
           <div className="footer-top-left sm:flex gap-3 xl:px-6">
-            <nav aria-label="footer navigation" className="flex-1">
-              <div className="sm:hidden">
-                <Accordion items={accordionItems} multiple className="border-b border-aeblack-100 last:border-b-0" />
-              </div>
-              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-x-2.5 gap-y-8 md:gap-y-12">
-                {navigationSections.map((section) => (
-                  <div key={section.value}>
-                    <h3 className="text-base font-semibold text-gray-900 mb-4">{section.title}</h3>
-                    <ul className="space-y-2">
-                      {section.links.map((link) => (
-                        <li key={link.label}>
-                          <Hyperlink href={link.href} variant="secondary">
-                            {link.label}
-                          </Hyperlink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </nav>
+            <FooterAccordion items={navigationItems} />
             <div className="text-center footer-contact lg:w-48 xl:w-[277px]">
               <ul className="divide-y divide-aeblack-100">
                 <li>
