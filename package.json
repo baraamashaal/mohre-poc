@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@aegov/design-system": "^2.3.0",
+    "@aegov/design-system-react": "^1.1.2",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
