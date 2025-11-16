@@ -30,6 +30,28 @@
     "login": "Login with UAE Pass",
     "logout": "Logout",
     "welcomeBack": "Welcome Back",
-    "unauthorized": "You are not authorized to access this page"
+    "unauthorized": "You are not authorized to access this page",
+    "uaePass": {
+      "signIn": "Sign in with UAE PASS",
+      "description": "A single trusted digital identity for all citizens, residents and visitors.",
+      "needAccount": "Need a UAE PASS account?",
+      "createAccount": "Create an account",
+      "useOtherOption": "Use other login option"
+    },
+    "legacy": {
+      "username": "Username",
+      "password": "Password",
+      "usernamePlaceholder": "enter your username / email address",
+      "passwordPlaceholder": "enter your password",
+      "forgotPassword": "Forgot Password?",
+      "loginButton": "Login",
+      "switchToUaePass": "Switch to",
+      "loginWithUaePass": "login with UAE pass",
+      "deprecationWarning": "This login method will be discontinued soon. You must switch to the use of UAE PASS.",
+      "usernameRequired": "Username is required",
+      "usernameMinLength": "Username must be at least 3 characters",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters"
+    }
   }
 }

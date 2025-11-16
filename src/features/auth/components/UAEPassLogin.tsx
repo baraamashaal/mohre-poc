@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import type {User} from '../types/auth.types';
 import { UAEPassButton } from './UAEPassButton'
 
@@ -7,6 +8,7 @@ interface UAEPassLoginProps {
 }
 
 export function UAEPassLogin({ onLoginSuccess, className = '' }: UAEPassLoginProps) {
+  const { t } = useTranslation('common')
   const handleUAEPassLogin = () => {
     // TODO: Implement real UAE Pass OAuth flow
     // For now, simulate login with mock user data
@@ -24,7 +26,7 @@ export function UAEPassLogin({ onLoginSuccess, className = '' }: UAEPassLoginPro
     <div className={`space-y-3 login-content ${className}`}>
       <UAEPassButton onClick={handleUAEPassLogin} />
       <p className="text-sm px-6 text-aeblack-800">
-        A single trusted digital identity for all citizens, residents and visitors.
+        {t('auth.uaePass.description')}
       </p>
     </div>
   )

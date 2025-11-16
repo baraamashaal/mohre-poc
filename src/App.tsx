@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
 import { AppRoutes } from './routes'
+import { useDirection } from './shared/hooks'
 import './lib/i18n'
 
 function App() {
-  useEffect(() => {
-    // Set initial direction based on default language
-    document.documentElement.dir = 'ltr'
-    document.documentElement.lang = 'en'
-  }, [])
+  // Automatically handle RTL/LTR direction switching
+  // Sets HTML dir and lang attributes based on current language
+  useDirection()
 
   return <AppRoutes />
 }

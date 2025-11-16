@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form'
-import type {User} from '../types/auth.types';
+import { useTranslation } from 'react-i18next'
+import { Hyperlink, Alert, Button } from '../../../shared/components/ui'
+import { Input } from '../../../shared/components/forms'
+import type { User } from '../types/auth.types';
 
 interface LegacyLoginForm {
   username: string
@@ -12,6 +15,7 @@ interface LegacyLoginProps {
 }
 
 export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps) {
+  const { t } = useTranslation('common')
   const { register, handleSubmit, formState: { errors } } = useForm<LegacyLoginForm>()
 
   const onSubmit = (data: LegacyLoginForm) => {
@@ -32,23 +36,11 @@ export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps
 
   return (
     <div className={`login-content ${className}`}>
-      <div role="alert" id="alert-4" className="aegov-alert alert-warning mb-6">
-        <div className="alert-content">
-          <p className="text-sm">
-            This login method will be discontinued soon. You must switch to the use of UAE PASS.
-          </p>
-        </div>
-        <div className="alert-dismiss">
-          <button data-dismiss-target="#alert-4" aria-label="Close">
-            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <Alert variant="warning" size="sm" className="mb-6" dismissable>
+        {t('auth.legacy.deprecationWarning')}
+      </Alert>
 
       <form
-        action=""
         className="text-start"
         onSubmit={(e) => {
           e.preventDefault()
@@ -56,56 +48,53 @@ export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps
         }}
       >
         <div className="grid grid-cols-1 gap-4">
-          <div className="aegov-form-control">
-            <label htmlFor="user_name">Username</label>
-            <div className="form-control-input">
-              <input
-                type="text"
-                id="user_name"
-                placeholder="enter your username / email address"
-                {...register('username', {
-                  required: 'Username is required',
-                  minLength: { value: 3, message: 'Username must be at least 3 characters' }
-                })}
-              />
-            </div>
-            {errors.username && (
-              <p className="text-red-500 text-xs mt-1">{errors.username.message}</p>
-            )}
-          </div>
+          <Input
+            id="user_name"
+            label={t('auth.legacy.username')}
+            type="text"
+            placeholder={t('auth.legacy.password')}
+            error={errors.username?.message}
+            required
+            {...register('username', {
+              required: t('auth.legacy.usernameRequired'),
+              minLength: { value: 3, message: t('auth.legacy.usernameMinLength') }
+            })}
+          />
 
-          <div className="aegov-form-control">
-            <label htmlFor="password_name">Password</label>
-            <div className="form-control-input">
-              <input
-                type="password"
-                id="password_name"
-                placeholder="enter your password"
-                {...register('password', {
-                  required: 'Password is required',
-                  minLength: { value: 6, message: 'Password must be at least 6 characters' }
-                })}
-              />
-            </div>
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
-            )}
-          </div>
+          <Input
+            id="password_name"
+            label={t('auth.legacy.password')}
+            type="password"
+            placeholder={t('auth.legacy.passwordPlaceholder')}
+            error={errors.password?.message}
+            required
+            {...register('password', {
+              required: t('auth.legacy.passwordRequired'),
+              minLength: { value: 6, message: t('auth.legacy.passwordMinLength') }
+            })}
+          />
 
           <div>
-            <a
+            <Hyperlink
               href="#"
               onClick={(e) => { e.preventDefault() }}
               className="no-underline"
             >
-              Forgot Password?
-            </a>
+              {t('auth.legacy.forgotPassword')}
+            </Hyperlink>
           </div>
 
           <div>
-            <button type="submit" className="aegov-btn btn-block btn-sm lg:btn-base mt-6">
-              Login
-            </button>
+            <Button
+              type="submit"
+              style="primary"
+              variant="solid"
+              size="sm"
+              block
+              className="lg:h-12 lg:px-6 lg:rounded-lg mt-6"
+            >
+              {t('auth.legacy.loginButton')}
+            </Button>
           </div>
         </div>
       </form>

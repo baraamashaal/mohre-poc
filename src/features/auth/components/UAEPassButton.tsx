@@ -1,9 +1,13 @@
+import { useTranslation } from 'react-i18next'
+
 interface UAEPassButtonProps {
   onClick: () => void
   className?: string
 }
 
 export function UAEPassButton({ onClick, className = '' }: UAEPassButtonProps) {
+  const { t } = useTranslation('common')
+
   return (
     <button
       className={`aegov-btn btn-sm lg:btn-base btn-secondary ${className}`}
@@ -37,7 +41,7 @@ export function UAEPassButton({ onClick, className = '' }: UAEPassButtonProps) {
         <path fillRule="evenodd" clipRule="evenodd" d="M7.84131 21.0085C7.87256 21.0773 7.91048 21.1423 7.95464 21.2031C7.92964 21.1602 7.90506 21.1169 7.88256 21.0773C7.87923 21.0715 7.86298 21.0448 7.84131 21.0085Z" fill="white" />
         <path fillRule="evenodd" clipRule="evenodd" d="M19.3805 20.3173C19.2893 20.2675 19.1868 20.2371 19.0762 20.2336C19.0383 20.2374 19.0004 20.2397 18.9628 20.243C16.089 20.4869 13.7542 18.6046 13.5051 15.8023C13.4621 15.3162 13.4778 14.7481 12.7942 14.7977C12.164 14.8438 12.1586 15.4623 12.1911 15.952C12.4009 19.1167 15.1281 21.5631 18.4343 21.5977C18.6492 21.5977 18.8669 21.5769 19.0846 21.5469C19.1274 21.5411 19.1702 21.5352 19.2133 21.5285C19.2705 21.514 19.3253 21.4927 19.3762 21.4651C19.5853 21.3531 19.7287 21.1386 19.7287 20.8898C19.7287 20.6431 19.5872 20.4301 19.3805 20.3173Z" fill="white" />
       </svg>
-      Sign in with UAE PASS
+      {t('auth.uaePass.signIn')}
     </button>
   )
 }

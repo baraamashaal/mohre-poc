@@ -3,6 +3,7 @@ export * from './Button'
 export * from './Card'
 export * from './Alert'
 export * from './Badge'
+export * from './LanguageSwitcher'
 
 // UAE Design System components
 export * from './Accordion'

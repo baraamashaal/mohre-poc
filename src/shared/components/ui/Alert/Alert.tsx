@@ -22,6 +22,7 @@ const AlertSchema = z.object({
   size: z.enum(['sm', 'base', 'lg']).default('base'),
   style: z.enum(['soft', 'solid']).default('soft'),
   onDismiss: z.function().optional(),
+  dismissable: z.boolean().optional(),
   action: z
     .object({
       text: z.string(),
@@ -117,6 +118,7 @@ export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   size?: AlertSize
   style?: AlertStyle
   onDismiss?: () => void
+  dismissable?: boolean
   action?: AlertActionProp
   showIcon?: boolean
 }
@@ -198,9 +200,25 @@ export const Alert: React.FC<AlertProps> = (props) => {
     style,
     action,
     onDismiss,
+    dismissable,
     showIcon,
     ...rest
   } = AlertSchema.parse(props)
+
+  const [isDismissed, setIsDismissed] = React.useState(false)
+
+  // Determine if alert should show dismiss button
+  const shouldShowDismiss = dismissable ?? !!onDismiss
+
+  const handleDismiss = () => {
+    setIsDismissed(true)
+    onDismiss?.()
+  }
+
+  // Don't render if dismissed
+  if (isDismissed) {
+    return null
+  }
 
   const variantStyle = variantStyles[variant]
   const styleVariant = variantStyle[style]
@@ -226,9 +244,9 @@ export const Alert: React.FC<AlertProps> = (props) => {
         style={style}
         showIcon={showIcon}
       />
-      {onDismiss && (
+      {shouldShowDismiss && (
         <button
-          onClick={onDismiss}
+          onClick={handleDismiss}
           aria-label="Close"
           type="button"
           className="flex-shrink-0 rounded-full hover:opacity-50 transition-opacity duration-200"

@@ -12,7 +12,9 @@
       "Bash(dir \"C:\\code\\mohre-poc\\src\\shared\\components\\ui\\Pagination\")",
       "Bash(npm install:*)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:www.i18next.com)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

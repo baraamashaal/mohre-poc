@@ -91,7 +91,7 @@ export function PopoverRoot(props: PopoverRootProps) {
     </Root>
   )
 }
-
+PopoverRoot.displayName = 'PopoverRoot';
 // ============================================================================
 // PopoverTrigger Component
 // ============================================================================
