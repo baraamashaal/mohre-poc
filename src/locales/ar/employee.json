@@ -7,6 +7,22 @@
     "position": "المنصب",
     "nationality": "الجنسية",
     "salary": "الراتب",
+    "personCode": "رمز الشخص",
+    "emiratesId": "الهوية الإماراتية",
+    "labourCard": "بطاقة العمل",
+    "status": "الحالة",
+    "sponsoredWorkers": "العمال المكفولون",
+    "noSponsoredWorkers": "ليس لديك أي عمال مكفولين بعد",
+    "workers": "العمال",
+    "fields": {
+      "personCode": "رمز الشخص",
+      "emiratesId": "الهوية الإماراتية",
+      "labourCard": "بطاقة العمل",
+      "name": "الاسم",
+      "nationality": "الجنسية",
+      "workPermitNumber": "رقم تصريح العمل",
+      "workPermitExpiry": "انتهاء تصريح العمل"
+    },
     "actions": {
       "title": "إجراءات الموظف",
       "modifyWorkPermit": "تعديل تصريح العمل",

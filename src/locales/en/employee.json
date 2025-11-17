@@ -7,6 +7,22 @@
     "position": "Position",
     "nationality": "Nationality",
     "salary": "Salary",
+    "personCode": "Person Code",
+    "emiratesId": "Emirates ID",
+    "labourCard": "Labour Card",
+    "status": "Status",
+    "sponsoredWorkers": "Sponsored Workers",
+    "noSponsoredWorkers": "You don't have any sponsored workers yet",
+    "workers": "Workers",
+    "fields": {
+      "personCode": "Person Code",
+      "emiratesId": "Emirates ID",
+      "labourCard": "Labour Card",
+      "name": "Name",
+      "nationality": "Nationality",
+      "workPermitNumber": "Work Permit Number",
+      "workPermitExpiry": "Work Permit Expiry"
+    },
     "actions": {
       "title": "Employee Actions",
       "modifyWorkPermit": "Modify Work Permit",

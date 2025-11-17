@@ -7,6 +7,18 @@
     "name": "Company Name",
     "tradeNumber": "Trade License Number",
     "employees": "Employees",
+    "myCompanies": "My Companies",
+    "companies": "Companies",
+    "noCompanies": "You don't have any companies yet",
+    "emirate": "Emirate",
+    "industry": "Industry",
+    "status": "Status",
+    "fields": {
+      "tradeNumber": "Trade License Number",
+      "emirate": "Emirate",
+      "industry": "Industry",
+      "employees": "Employees"
+    },
     "actions": {
       "title": "Company Actions",
       "addWorkPermit": "Add New Work Permit"

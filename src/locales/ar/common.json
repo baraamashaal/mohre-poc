@@ -24,7 +24,13 @@
     "actions": "الإجراءات",
     "enquiries": "الاستفسارات",
     "viewDetails": "عرض التفاصيل",
+    "viewAll": "عرض الكل",
     "backToDashboard": "العودة إلى لوحة التحكم"
+  },
+  "newsletter": {
+    "title": "اشترك في نشرتنا الإخبارية",
+    "description": "للبقاء على اتصال بأحدث المعلومات من الوزارة",
+    "subscribe": "اشترك الآن"
   },
   "auth": {
     "login": "تسجيل الدخول باستخدام UAE Pass",

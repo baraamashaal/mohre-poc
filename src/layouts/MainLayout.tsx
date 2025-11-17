@@ -14,7 +14,7 @@ export function MainLayout() {
     <div className="min-h-screen bg-aegov-bg flex flex-col">
       <Header />
 
-      <main className="flex-1 container mx-auto max-w-7xl px-4 py-8">
+      <main className="flex-1 container mx-auto py-8">
         <Outlet />
       </main>
 

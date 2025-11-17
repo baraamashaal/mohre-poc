@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Button, Card } from '../../../shared/components/ui'
-import { EmployeeTable } from '../../employee/components/EmployeeTable'
+import { EmployeeList } from '../../employee/components/EmployeeList'
 import { Input } from '../../../shared/components/forms'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import type { Employee } from '../../employee/types/employee.types'
@@ -139,7 +139,7 @@ export function CompanyDetails() {
             </div>
           </div>
 
-          <EmployeeTable
+          <EmployeeList
             employees={mockEmployees}
             currentPage={1}
             totalPages={1}

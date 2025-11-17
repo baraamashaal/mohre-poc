@@ -1,4 +1,5 @@
 export { EmployeeTable } from './EmployeeTable'
+export { EmployeeList } from './EmployeeList'
 export { EmployeeCard } from './EmployeeCard'
 export { EmployeeActions } from './EmployeeActions'
 export { EmployeeEnquiries } from './EmployeeEnquiries'

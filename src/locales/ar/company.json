@@ -7,6 +7,18 @@
     "name": "اسم الشركة",
     "tradeNumber": "رقم الرخصة التجارية",
     "employees": "الموظفين",
+    "myCompanies": "شركاتي",
+    "companies": "الشركات",
+    "noCompanies": "ليس لديك أي شركات بعد",
+    "emirate": "الإمارة",
+    "industry": "الصناعة",
+    "status": "الحالة",
+    "fields": {
+      "tradeNumber": "رقم الرخصة التجارية",
+      "emirate": "الإمارة",
+      "industry": "الصناعة",
+      "employees": "الموظفين"
+    },
     "actions": {
       "title": "إجراءات الشركة",
       "addWorkPermit": "إضافة تصريح عمل جديد"

@@ -24,7 +24,13 @@
     "actions": "Actions",
     "enquiries": "Enquiries",
     "viewDetails": "View Details",
+    "viewAll": "View All",
     "backToDashboard": "Back to Dashboard"
+  },
+  "newsletter": {
+    "title": "Sign up for our newsletter",
+    "description": "To stay in touch with the latest information from the ministry",
+    "subscribe": "Subscribe now"
   },
   "auth": {
     "login": "Login with UAE Pass",

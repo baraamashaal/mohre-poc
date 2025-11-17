@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Card } from '../../../shared/components/ui'
-import { EmployeeTable } from '../components/EmployeeTable'
+import { EmployeeList } from '../components/EmployeeList'
 import { Input } from '../../../shared/components/forms'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react'
 import type { Employee } from '../types/employee.types'
@@ -68,7 +68,7 @@ export function SponsorEmployees() {
             </div>
           </div>
 
-          <EmployeeTable
+          <EmployeeList
             employees={mockSponsoredEmployees}
             currentPage={1}
             totalPages={1}
