@@ -2,26 +2,35 @@
 
 This document tracks planned features and improvements for the MOHRE POC application.
 
-## Phase 1: API Integration
+## Phase 1: API Integration ✅ COMPLETED
 
 ### API Service Layer with Axios
-- [ ] Create axios instance with base configuration
-  - [ ] Set up request/response interceptors
-  - [ ] Add authentication token injection
-  - [ ] Implement error handling middleware
-  - [ ] Add retry logic for failed requests
+- [x] Create axios instance with base configuration
+  - [x] Set up request/response interceptors
+  - [x] Add authentication token injection
+  - [x] Implement error handling middleware
+  - [x] Add retry logic for failed requests
 
-- [ ] Create service files
-  - [ ] `src/shared/lib/axios.ts` - Base axios configuration
-  - [ ] `src/features/auth/services/auth.service.ts` - Authentication APIs
-  - [ ] `src/features/company/services/company.service.ts` - Company APIs
-  - [ ] `src/features/employee/services/employee.service.ts` - Employee APIs
-  - [ ] `src/features/sponsor/services/sponsor.service.ts` - Sponsor APIs
+- [x] Create service files
+  - [x] `src/shared/lib/axios.ts` - Base axios configuration
+  - [x] `src/features/auth/services/auth.api.ts` - Authentication APIs
+  - [x] `src/features/company/services/company.api.ts` - Company APIs
+  - [x] `src/features/employee/services/employee.api.ts` - Employee APIs
+  - [x] `src/features/sponsor/services/sponsor.api.ts` - Sponsor APIs
 
-- [ ] Define API types
-  - [ ] Request/Response interfaces
-  - [ ] Error response types
-  - [ ] Pagination types
+- [x] Define API types
+  - [x] Request/Response interfaces (`src/shared/types/api.types.ts`)
+  - [x] Error response types
+  - [x] Pagination types
+
+- [x] Environment configuration
+  - [x] `.env.example` file with all required variables
+  - [x] `.env` file for local development
+  - [x] Updated `.gitignore` to exclude `.env` files
+
+- [x] Feature flag support
+  - [x] `VITE_ENABLE_MOCK_API` flag to switch between mock and real API
+  - [x] Updated `authService.ts` to use both mock and real API based on flag
 
 ## Phase 2: Detail Pages
 

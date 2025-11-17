@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { Card, Button, Badge } from '../../../shared/components/ui'
 import type { Company } from '../types/company.types'
 import { buildRoute, ROUTES } from '../../../shared/constants'
@@ -9,6 +10,7 @@ interface CompanyCardProps {
 
 export function CompanyCard({ company }: CompanyCardProps) {
   const { t } = useTranslation('company')
+  const navigate = useNavigate()
 
   const statusColors = {
     active: 'success' as const,
@@ -46,9 +48,9 @@ export function CompanyCard({ company }: CompanyCardProps) {
           variant="link"
           color="primary"
           onClick={() => {
-            window.location.href = buildRoute(ROUTES.COMPANY_DETAILS, {
+            void navigate(buildRoute(ROUTES.COMPANY_DETAILS, {
               id: company.id,
-            })
+            }))
           }}
         >
           {t('common:common.viewDetails')} →

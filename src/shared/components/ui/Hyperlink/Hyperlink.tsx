@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type ComponentPropsWithoutRef } from 'react'
+import { Link } from 'react-router-dom'
 import { Slot } from '@radix-ui/react-slot'
 import { CaretRightIcon } from '@phosphor-icons/react'
 import { cva } from 'class-variance-authority'
@@ -59,13 +60,35 @@ export interface HyperlinkProps extends ComponentPropsWithoutRef<'a'> {
 }
 
 // ============================================================================
+// Helper Functions
+// ============================================================================
+
+/**
+ * Check if URL is external (absolute URL or different origin)
+ */
+function isExternalUrl(href?: string): boolean {
+  if (!href) return false
+
+  // Check for absolute URLs (http://, https://, //, mailto:, tel:, etc.)
+  if (/^(https?:)?\/\//.test(href) || /^(mailto|tel):/.test(href)) {
+    return true
+  }
+
+  // Check if it starts with # (hash links are internal)
+  if (href.startsWith('#')) {
+    return false
+  }
+
+  // Relative paths are internal
+  return false
+}
+
+// ============================================================================
 // Hyperlink Component
 // ============================================================================
 
 export const Hyperlink = forwardRef<HTMLAnchorElement, HyperlinkProps>(
   ({ href, children, variant = 'default', asChild = false, external = false, icon = false, className, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'a'
-
     try {
       hyperlinkSchema.parse({ href, children, variant, asChild, external, icon, className })
     } catch (error) {
@@ -73,7 +96,19 @@ export const Hyperlink = forwardRef<HTMLAnchorElement, HyperlinkProps>(
       return null
     }
 
-    const externalProps = external
+    // Auto-detect if link is external
+    const isExternal = external || isExternalUrl(href)
+
+    // Choose the appropriate component
+    let Comp: React.ElementType = 'a'
+    if (asChild) {
+      Comp = Slot
+    } else if (!isExternal && href && !href.startsWith('#')) {
+      // Use React Router Link for internal routes
+      Comp = Link
+    }
+
+    const externalProps = isExternal
       ? {
           target: '_blank',
           rel: 'noopener noreferrer',
@@ -84,12 +119,23 @@ export const Hyperlink = forwardRef<HTMLAnchorElement, HyperlinkProps>(
       <>
         {children}
         {icon && <CaretRightIcon className="h-5 w-5 rtl:-scale-x-100" aria-hidden="true" />}
-        {external && <span className="sr-only"> (opens in new tab)</span>}
+        {isExternal && <span className="sr-only"> (opens in new tab)</span>}
       </>
     )
 
+    // Use 'to' prop for Link, 'href' for <a>
+    const linkProps = Comp === Link && href
+      ? { to: href }
+      : { href: !asChild ? href : undefined }
+
     return (
-      <Comp ref={ref} href={!asChild ? href : undefined} className={hyperlinkVariants({ variant, className })} {...externalProps} {...props}>
+      <Comp
+        ref={ref}
+        {...linkProps}
+        className={hyperlinkVariants({ variant, className })}
+        {...externalProps}
+        {...props}
+      >
         {content}
       </Comp>
     )

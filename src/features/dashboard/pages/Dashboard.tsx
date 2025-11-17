@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../auth'
 import { UserRole } from '../../../shared/constants'
 import { Card, Button } from '../../../shared/components/ui'
@@ -7,6 +8,7 @@ import { ROUTES } from '../../../shared/constants'
 export function Dashboard() {
   const { t } = useTranslation('common')
   const { user } = useAuth()
+  const navigate = useNavigate()
 
   const hasRole = (role: UserRole) => user?.roles.includes(role) ?? false
 
@@ -68,7 +70,9 @@ export function Dashboard() {
                 <Button
                   variant="link"
                   color="primary"
-                  onClick={() => (window.location.href = action.href)}
+                  onClick={() => {
+                    void navigate(action.href)
+                  }}
                 >
                   {t('common.viewDetails')} →
                 </Button>

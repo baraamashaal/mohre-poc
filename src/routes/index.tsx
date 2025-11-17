@@ -1,14 +1,15 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import { ProtectedRoute } from '../features/auth'
 import { Login } from '../features/auth'
 import { Dashboard } from '../features/dashboard'
-import { CompanyList } from '../features/company'
+import { CompanyList, CompanyDetails } from '../features/company/pages'
+import { EmployeeDetails, SponsorEmployees } from '../features/employee/pages'
 import { MainLayout } from '../layouts'
 import { ROUTES, UserRole } from '../shared/constants'
 
 export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public Routes */}
         <Route path={ROUTES.LOGIN} element={<Login />} />
@@ -21,9 +22,10 @@ export function AppRoutes() {
             </ProtectedRoute>
           }
         >
-          {/* All nested routes automatically get Header + Footer */}
+          {/* Dashboard */}
           <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
 
+          {/* Company Routes */}
           <Route
             path={ROUTES.COMPANIES}
             element={
@@ -31,6 +33,41 @@ export function AppRoutes() {
                 requiredRoles={[UserRole.COMPANY_OWNER, UserRole.COMPANY_AUTHORIZER]}
               >
                 <CompanyList />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.COMPANY_DETAILS}
+            element={
+              <ProtectedRoute
+                requiredRoles={[UserRole.COMPANY_OWNER, UserRole.COMPANY_AUTHORIZER]}
+              >
+                <CompanyDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Employee Routes */}
+          <Route
+            path={ROUTES.EMPLOYEE_DETAILS}
+            element={
+              <ProtectedRoute
+                requiredRoles={[UserRole.COMPANY_OWNER, UserRole.COMPANY_AUTHORIZER, UserRole.SPONSOR]}
+              >
+                <EmployeeDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Sponsor Routes */}
+          <Route
+            path={ROUTES.SPONSORS}
+            element={
+              <ProtectedRoute
+                requiredRoles={[UserRole.SPONSOR]}
+              >
+                <SponsorEmployees />
               </ProtectedRoute>
             }
           />
@@ -46,9 +83,9 @@ export function AppRoutes() {
                 <p className="text-gray-600 mb-8">
                   The page you're looking for doesn't exist.
                 </p>
-                <a href={ROUTES.DASHBOARD} className="aegov-btn aegov-btn-solid btn-primary">
+                <Link to={ROUTES.DASHBOARD} className="aegov-btn aegov-btn-solid btn-primary">
                   Go to Dashboard
-                </a>
+                </Link>
               </div>
             }
           />
@@ -57,6 +94,6 @@ export function AppRoutes() {
         {/* Redirect root to dashboard */}
         <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

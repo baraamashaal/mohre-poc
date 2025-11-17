@@ -1,14 +1,15 @@
 import type { BaseEntity } from '../../../shared/types'
 
 export interface Employee extends BaseEntity {
-  name: string
+  personCode: string
   emiratesId: string
+  labourCard: string
+  name: string
   nationality: string
-  position: string
-  salary: number
+  position?: string
   companyId: string
-  workPermitNumber: string
-  workPermitExpiry: Date
+  workPermitNumber?: string
+  workPermitExpiry?: Date
   status: 'active' | 'inactive' | 'pending'
 }
 

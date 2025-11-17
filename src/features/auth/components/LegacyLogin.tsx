@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Hyperlink, Alert, Button } from '../../../shared/components/ui'
 import { Input } from '../../../shared/components/forms'
-import type { User } from '../types/auth.types';
+import { loginWithCredentials } from '../services/authService'
+import type { LoginResponse } from '../types/auth.types'
 
 interface LegacyLoginForm {
   username: string
@@ -10,28 +12,36 @@ interface LegacyLoginForm {
 }
 
 interface LegacyLoginProps {
-  onLoginSuccess: (user: User) => void
+  onLoginSuccess: (response: LoginResponse) => void
+  onLoginError?: (error: string) => void
   className?: string
 }
 
-export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps) {
+export function LegacyLogin({ onLoginSuccess, onLoginError, className = '' }: LegacyLoginProps) {
   const { t } = useTranslation('common')
   const { register, handleSubmit, formState: { errors } } = useForm<LegacyLoginForm>()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const onSubmit = (data: LegacyLoginForm) => {
-    // TODO: Implement alternative login API call
-    console.log('Legacy login:', data)
+  const onSubmit = async (data: LegacyLoginForm) => {
+    setIsLoading(true)
+    setError(null)
 
-    // Mock login for development
-    const mockUser: User = {
-      id: '2',
-      name: data.username,
-      email: `${data.username}@example.ae`,
-      emiratesId: '784-1990-1234567-2',
-      roles: ['COMPANY_OWNER'],
+    try {
+      // Call auth service
+      const response = await loginWithCredentials({
+        email: data.username,
+        password: data.password,
+      })
+
+      onLoginSuccess(response)
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Login failed'
+      setError(errorMessage)
+      onLoginError?.(errorMessage)
+    } finally {
+      setIsLoading(false)
     }
-
-    onLoginSuccess(mockUser)
   }
 
   return (
@@ -39,6 +49,12 @@ export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps
       <Alert variant="warning" size="sm" className="mb-6" dismissable>
         {t('auth.legacy.deprecationWarning')}
       </Alert>
+
+      {error && (
+        <Alert variant="error" size="sm" className="mb-4" dismissable onDismiss={() => { setError(null) }}>
+          {error}
+        </Alert>
+      )}
 
       <form
         className="text-start"
@@ -91,9 +107,10 @@ export function LegacyLogin({ onLoginSuccess, className = '' }: LegacyLoginProps
               variant="solid"
               size="sm"
               block
+              disabled={isLoading}
               className="lg:h-12 lg:px-6 lg:rounded-lg mt-6"
             >
-              {t('auth.legacy.loginButton')}
+              {isLoading ? t('auth.legacy.loggingIn') : t('auth.legacy.loginButton')}
             </Button>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { ROUTES } from '../../../shared/constants'
 import { UAEPassLogin } from '../components/UAEPassLogin'
 import { LegacyLogin } from '../components/LegacyLogin'
 import { Card, Alert, Hyperlink, LanguageSwitcher } from '../../../shared/components/ui'
-import type {User} from '../types/auth.types';
+import type { LoginResponse } from '../types/auth.types'
 
 export function Login() {
   const { t } = useTranslation('common')
@@ -18,15 +18,13 @@ export function Login() {
   // Derive state directly from URL parameter (single source of truth)
   const showLegacyLogin = searchParams.get('isLegacy') === 'true'
   const showUaePassLogin = !showLegacyLogin
-  const handleLoginSuccess = (user: User) => {
+
+  const handleLoginSuccess = (response: LoginResponse) => {
     setError(null)
-    login(user)
+    login(response)
     void navigate(ROUTES.DASHBOARD)
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleLoginError = (errorMessage: string) => {
     setError(errorMessage)
   }
@@ -99,7 +97,10 @@ export function Login() {
         {
           showLegacyLogin &&
           <>
-              <LegacyLogin onLoginSuccess={handleLoginSuccess} />
+              <LegacyLogin
+                onLoginSuccess={handleLoginSuccess}
+                onLoginError={handleLoginError}
+              />
               <div>
                   {t('auth.legacy.switchToUaePass')}{' '}
                   <Hyperlink
